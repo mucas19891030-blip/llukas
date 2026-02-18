@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Transações - Banco Bancário</title>
+    <link rel="stylesheet" href="../banco.css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-back">
+                <a href="index.html" class="back-button">← Voltar</a>
+            </div>
+            <h1 class="header-title">Histórico de Transações</h1>
+            <p class="header-subtitle">Visualize suas transações</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="form-container">
+                <!-- Search Card -->
+                <div class="form-card">
+                    <div class="form-icon history-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+
+                    <form id="searchForm" class="form">
+                        <!-- Email Input -->
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email do Usuário</label>
+                            <input 
+                                id="email" 
+                                type="email" 
+                                placeholder="seu@gmail.com"
+                                class="form-input"
+                                required
+                            >
+                            <p class="form-hint">Digite o email para ver o histórico de transações</p>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary btn-full">Buscar Transações</button>
+                    </form>
+                </div>
+
+                <!-- Balance Summary -->
+                <div id="balanceSection" class="balance-section" style="display: none;">
+                    <div class="balance-card">
+                        <p class="balance-label">Saldo Total</p>
+                        <p class="balance-value">R$ <span id="balanceValue">0.00</span></p>
+                    </div>
+                </div>
+
+                <!-- Transactions List -->
+                <div id="transactionsSection" style="display: none;">
+                    <h3>Últimas Transações</h3>
+                    <div id="transactionsList" class="transactions-list">
+                        <!-- Transações serão inseridas aqui -->
+                    </div>
+                </div>
+
+                <!-- No Transactions Message -->
+                <div id="noTransactionsMessage" class="form-card" style="display: none; text-align: center;">
+                    <p>Nenhuma transação encontrada</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Banco Bancário. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="banking-system.js"></script>
+    <script src="../banco.js/history.js"></script>
+</body>
+</html>

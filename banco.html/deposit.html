@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depósito - Banco Bancário</title>
+    <link rel="stylesheet" href="../banco.css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-back">
+                <a href="index.html" class="back-button">← Voltar</a>
+            </div>
+            <h1 class="header-title">Depósito</h1>
+            <p class="header-subtitle">Adicione fundos à sua conta</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="form-container">
+                <div class="form-card">
+                    <div class="form-icon deposit-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M17 5H7c-1 0-2 1-2 2v10c0 1 1 2 2 2h10c1 0 2-1 2-2V7c0-1-1-2-2-2z"></path>
+                        </svg>
+                    </div>
+
+                    <form id="depositForm" class="form">
+                        <!-- Email Input -->
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email do Usuário</label>
+                            <input 
+                                id="email" 
+                                type="email" 
+                                placeholder="seu@gmail.com"
+                                class="form-input"
+                                required
+                            >
+                            <p class="form-hint">Digite o email da conta que receberá o depósito</p>
+                        </div>
+
+                        <!-- Value Input -->
+                        <div class="form-group">
+                            <label for="value" class="form-label">Valor do Depósito (R$)</label>
+                            <input 
+                                id="value" 
+                                type="number" 
+                                placeholder="0.00"
+                                step="0.01"
+                                min="0"
+                                class="form-input"
+                                required
+                            >
+                            <p class="form-hint">Insira o valor que deseja depositar</p>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary btn-full">Realizar Depósito</button>
+                    </form>
+
+                    <!-- Info Box -->
+                    <div class="info-box">
+                        <p><strong>Nota:</strong> Os depósitos são processados instantaneamente. Você receberá uma confirmação assim que a operação for concluída.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Banco Bancário. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="banking-system.js"></script>
+    <script src="../banco.js/deposit.js"></script>
+</body>
+</html>

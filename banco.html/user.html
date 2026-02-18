@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário - Banco Bancário</title>
+    <link rel="stylesheet" href="../banco.css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-back">
+                <a href="index.html" class="back-button">← Voltar</a>
+            </div>
+            <h1 class="header-title">Cadastro de Usuário</h1>
+            <p class="header-subtitle">Crie uma nova conta bancária</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="form-container">
+                <div class="form-card">
+                    <div class="form-icon user-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+
+                    <form id="userForm" class="form">
+                        <!-- Full Name Input -->
+                        <div class="form-group">
+                            <label for="fullName" class="form-label">Nome Completo</label>
+                            <input 
+                                id="fullName" 
+                                type="text" 
+                                placeholder="João da Silva"
+                                class="form-input"
+                                required
+                            >
+                            <p class="form-hint">Digite seu nome completo</p>
+                        </div>
+
+                        <!-- Email Input -->
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input 
+                                id="email" 
+                                type="email" 
+                                placeholder="seu@gmail.com"
+                                class="form-input"
+                                required
+                            >
+                            <p class="form-hint">O email será usado como identificador único da conta</p>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary btn-full">Criar Conta</button>
+                    </form>
+
+                    <!-- Info Box -->
+                    <div class="info-box">
+                        <p><strong>Importante:</strong></p>
+                        <ul class="info-list">
+                            <li>• Cada email só pode ser usado uma vez</li>
+                            <li>• Você receberá uma conta com saldo inicial de R$ 0,00</li>
+                            <li>• Poderá realizar depósitos, transferências e solicitar empréstimos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Banco Bancário. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="banking-system.js"></script>
+    <script src="../banco.js/user.js"></script>
+</body>
+</html>

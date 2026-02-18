@@ -1,0 +1,711 @@
+/**
+ * Banco Bancário - CSS Stylesheet
+ * Design: Minimalismo Corporativo Moderno
+ * Paleta: Azul profundo, branco puro, cinza neutro
+ * Tipografia: Poppins (títulos), Inter (corpo)
+ */
+
+/* ============================================
+   1. RESET E VARIÁVEIS GLOBAIS
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Cores */
+    --primary: #1e3a8a;           /* Azul profundo */
+    --primary-light: #3b82f6;     /* Azul claro */
+    --primary-dark: #1e40af;      /* Azul muito escuro */
+    --background: #ffffff;        /* Branco puro */
+    --foreground: #404854;        /* Cinza escuro */
+    --border: #e5e7eb;            /* Cinza claro */
+    --secondary: #f3f4f6;         /* Cinza muito claro */
+    --success: #10b981;           /* Verde suave */
+    --danger: #ef4444;            /* Vermelho */
+    --warning: #f59e0b;           /* Laranja */
+    
+    /* Tipografia */
+    --font-display: 'Poppins', sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    
+    /* Espaçamento */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    
+    /* Sombras */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    
+    /* Raio de borda */
+    --radius: 0.5rem;
+    --radius-lg: 0.75rem;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--foreground);
+    background-color: var(--background);
+    line-height: 1.6;
+}
+
+/* ============================================
+   2. TIPOGRAFIA
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--foreground);
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+p {
+    margin: var(--spacing-md) 0;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+/* ============================================
+   3. CONTAINER E LAYOUT
+   ============================================ */
+
+.container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+}
+
+/* ============================================
+   4. HEADER
+   ============================================ */
+
+.header {
+    background-color: var(--background);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-xl) 0;
+}
+
+.header .container {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+}
+
+.header-back {
+    display: flex;
+    align-items: center;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius);
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: var(--secondary);
+}
+
+.header-title {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.header-subtitle {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    margin: var(--spacing-sm) 0 0 0;
+}
+
+/* ============================================
+   5. MAIN CONTENT
+   ============================================ */
+
+.main-content {
+    min-height: calc(100vh - 200px);
+    padding: var(--spacing-2xl) 0;
+}
+
+/* ============================================
+   6. SEÇÕES
+   ============================================ */
+
+.welcome-section {
+    background: linear-gradient(135deg, #f0f4ff 0%, #f5f8ff 100%);
+    border: 1px solid #dbeafe;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-2xl);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.welcome-section h2 {
+    margin-bottom: var(--spacing-md);
+}
+
+.welcome-section p {
+    color: var(--foreground);
+    margin: 0;
+}
+
+.features-section {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.features-section h3 {
+    margin-bottom: var(--spacing-xl);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.feature-card {
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-light);
+    transform: translateY(-2px);
+}
+
+.feature-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-lg);
+    color: white;
+    font-size: 24px;
+}
+
+.deposit-icon {
+    background-color: #dcfce7;
+    color: var(--success);
+}
+
+.transfer-icon {
+    background-color: #dbeafe;
+    color: var(--primary-light);
+}
+
+.loan-icon {
+    background-color: #e0e7ff;
+    color: #6366f1;
+}
+
+.user-icon {
+    background-color: #f3e8ff;
+    color: #a855f7;
+}
+
+.history-icon {
+    background-color: #f1f5f9;
+    color: var(--foreground);
+}
+
+.feature-card h4 {
+    margin-bottom: var(--spacing-md);
+}
+
+.feature-card p {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+.info-section {
+    background-color: var(--secondary);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-2xl);
+}
+
+.info-section h3 {
+    margin-bottom: var(--spacing-xl);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.info-card {
+    background-color: var(--background);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius);
+}
+
+.info-title {
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    font-size: 1rem;
+}
+
+.info-text {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+/* ============================================
+   7. FORMULÁRIOS
+   ============================================ */
+
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-card {
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-2xl);
+    box-shadow: var(--shadow-sm);
+}
+
+.form-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--spacing-xl);
+    color: white;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.form-label {
+    font-weight: 500;
+    color: var(--foreground);
+    font-size: 0.95rem;
+}
+
+.form-input {
+    padding: var(--spacing-md);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+}
+
+.form-input::placeholder {
+    color: #9ca3af;
+}
+
+.form-hint {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin: 0;
+}
+
+.interest-box {
+    background-color: var(--secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: var(--spacing-lg);
+}
+
+.interest-label {
+    font-size: 0.875rem;
+    color: var(--foreground);
+    margin: var(--spacing-sm) 0;
+}
+
+.interest-label:first-child {
+    margin-top: 0;
+}
+
+.interest-label:last-child {
+    margin-bottom: 0;
+}
+
+.info-box {
+    background-color: #dbeafe;
+    border: 1px solid #bfdbfe;
+    border-radius: var(--radius);
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+.info-box p {
+    color: var(--foreground);
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.info-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-md) 0 0 0;
+}
+
+.info-list li {
+    font-size: 0.875rem;
+    color: var(--foreground);
+    margin: var(--spacing-sm) 0;
+}
+
+/* ============================================
+   8. BOTÕES
+   ============================================ */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md) var(--spacing-lg);
+    border: none;
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--primary);
+    border: 1px solid var(--border);
+}
+
+.btn-outline:hover {
+    background-color: var(--secondary);
+    border-color: var(--primary);
+}
+
+.btn-full {
+    width: 100%;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ============================================
+   9. HISTÓRICO E TRANSAÇÕES
+   ============================================ */
+
+.balance-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.balance-card {
+    background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+    border: 1px solid #bfdbfe;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+}
+
+.balance-label {
+    font-size: 0.875rem;
+    color: var(--foreground);
+    margin-bottom: var(--spacing-md);
+}
+
+.balance-value {
+    font-size: 2rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0;
+}
+
+.transactions-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.transaction-item {
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+.transaction-item:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.transaction-left {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+}
+
+.transaction-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+}
+
+.transaction-details h4 {
+    margin: 0 0 var(--spacing-xs) 0;
+    font-size: 1rem;
+}
+
+.transaction-details p {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0;
+}
+
+.transaction-amount {
+    font-size: 1.125rem;
+    font-weight: 600;
+    font-family: var(--font-mono);
+}
+
+.transaction-amount.positive {
+    color: var(--success);
+}
+
+.transaction-amount.negative {
+    color: var(--danger);
+}
+
+/* ============================================
+   10. FOOTER
+   ============================================ */
+
+.footer {
+    background-color: var(--background);
+    border-top: 1px solid var(--border);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.footer p {
+    margin: 0;
+}
+
+/* ============================================
+   11. NOTIFICAÇÕES
+   ============================================ */
+
+.notification {
+    position: fixed;
+    top: var(--spacing-lg);
+    right: var(--spacing-lg);
+    background-color: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-lg);
+    max-width: 400px;
+    z-index: 1000;
+    animation: slideIn 0.3s ease;
+}
+
+.notification.success {
+    border-left: 4px solid var(--success);
+}
+
+.notification.error {
+    border-left: 4px solid var(--danger);
+}
+
+.notification.warning {
+    border-left: 4px solid var(--warning);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* ============================================
+   12. RESPONSIVIDADE
+   ============================================ */
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+    }
+
+    .header {
+        padding: var(--spacing-lg) 0;
+    }
+
+    .header .container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-md);
+    }
+
+    .header-title {
+        font-size: 1.5rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .transaction-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-md);
+    }
+
+    .transaction-amount {
+        align-self: flex-start;
+    }
+
+    .notification {
+        left: var(--spacing-lg);
+        right: var(--spacing-lg);
+        max-width: none;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+
+    .form-card {
+        padding: var(--spacing-lg);
+    }
+
+    .welcome-section {
+        padding: var(--spacing-lg);
+    }
+
+    .info-section {
+        padding: var(--spacing-lg);
+    }
+
+    .balance-value {
+        font-size: 1.5rem;
+    }
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transferência - Banco Bancário</title>
+    <link rel="stylesheet" href="../banco.css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-back">
+                <a href="index.html" class="back-button">← Voltar</a>
+            </div>
+            <h1 class="header-title">Transferência</h1>
+            <p class="header-subtitle">Envie dinheiro para outro usuário</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="form-container">
+                <div class="form-card">
+                    <div class="form-icon transfer-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 3l4 4m0-4l-4 4M8 21l-4-4m0 4l4-4M3 12h18"></path>
+                        </svg>
+                    </div>
+
+                    <form id="transferForm" class="form">
+                        <!-- From Email Input -->
+                        <div class="form-group">
+                            <label for="fromEmail" class="form-label">Email do Remetente</label>
+                            <input 
+                                id="fromEmail" 
+                                type="email" 
+                                placeholder="seu@gmail.com"
+                                class="form-input"
+                                required
+                            >
+                            <p class="form-hint">Sua conta (de onde sairá o dinheiro)</p>
+                        </div>
+
+                        <!-- To Email Input -->
+                        <div class="form-group">
+                            <label for="toEmail" class="form-label">Email do Destinatário</label>
+                            <input 
+                                id="toEmail" 
+                                type="email" 
+                                placeholder="destinatario@gmail.com"
+                                class="form-input"
+                                required
+                            >
+                            <p class="form-hint">Email da pessoa que receberá o dinheiro</p>
+                        </div>
+
+                        <!-- Value Input -->
+                        <div class="form-group">
+                            <label for="value" class="form-label">Valor da Transferência (R$)</label>
+                            <input 
+                                id="value" 
+                                type="number" 
+                                placeholder="0.00"
+                                step="0.01"
+                                min="0"
+                                class="form-input"
+                                required
+                            >
+                            <p class="form-hint">Insira o valor que deseja transferir</p>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary btn-full">Realizar Transferência</button>
+                    </form>
+
+                    <!-- Info Box -->
+                    <div class="info-box">
+                        <p><strong>Nota:</strong> Certifique-se de que o email do destinatário está correto. As transferências são instantâneas e não podem ser revertidas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Banco Bancário. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="banking-system.js"></script>
+    <script src="../banco.js/transfer.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empréstimo - Banco Bancário</title>
+    <link rel="stylesheet" href="../banco.css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-back">
+                <a href="index.html" class="back-button">← Voltar</a>
+            </div>
+            <h1 class="header-title">Empréstimo</h1>
+            <p class="header-subtitle">Solicite um empréstimo com parcelas</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="form-container">
+                <div class="form-card">
+                    <div class="form-icon loan-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                            <path d="M16 4V2m-8 2V2"></path>
+                        </svg>
+                    </div>
+
+                    <form id="loanForm" class="form">
+                        <!-- Email Input -->
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email do Usuário</label>
+                            <input 
+                                id="email" 
+                                type="email" 
+                                placeholder="seu@gmail.com"
+                                class="form-input"
+                                required
+                            >
+                            <p class="form-hint">Digite o email da conta que solicitará o empréstimo</p>
+                        </div>
+
+                        <!-- Value Input -->
+                        <div class="form-group">
+                            <label for="value" class="form-label">Valor do Empréstimo (R$)</label>
+                            <input 
+                                id="value" 
+                                type="number" 
+                                placeholder="0.00"
+                                step="0.01"
+                                min="0"
+                                class="form-input"
+                                required
+                            >
+                            <p class="form-hint">Insira o valor que deseja emprestar</p>
+                        </div>
+
+                        <!-- Installments Input -->
+                        <div class="form-group">
+                            <label for="installments" class="form-label">Número de Parcelas</label>
+                            <input 
+                                id="installments" 
+                                type="number" 
+                                placeholder="12"
+                                min="1"
+                                max="60"
+                                value="12"
+                                class="form-input"
+                                required
+                            >
+                            <p class="form-hint">Escolha entre 1 e 60 parcelas</p>
+                        </div>
+
+                        <!-- Interest Rate Display -->
+                        <div class="interest-box">
+                            <p class="interest-label"><strong>Taxa de Juros:</strong> <span id="interestRate">5.0</span>%</p>
+                            <p class="interest-label"><strong>Valor Total:</strong> R$ <span id="totalValue">0.00</span></p>
+                            <p class="interest-label"><strong>Por Parcela:</strong> R$ <span id="installmentValue">0.00</span></p>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary btn-full">Solicitar Empréstimo</button>
+                    </form>
+
+                    <!-- Info Box -->
+                    <div class="info-box">
+                        <p><strong>Nota:</strong> O empréstimo será aprovado instantaneamente e o valor será adicionado à sua conta. As parcelas começarão a vencer conforme o cronograma estabelecido.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Banco Bancário. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="banking-system.js"></script>
+    <script src="../banco.js/loan.js"></script>
+</body>
+</html>
