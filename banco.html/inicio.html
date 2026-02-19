@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Bancário - Bem-vindo</title>
+    <link rel="icon" href="../img/mobile-banking (1).png" type="image/png">
+    <link rel="stylesheet" href="../banco.css/styles.css">
+    <style>
+        /* ============================================
+           PÁGINA INICIAL DE BOAS-VINDAS
+           ============================================ */
+
+        .welcome-page {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            padding: var(--spacing-lg);
+        }
+
+        .welcome-card {
+            background-color: var(--background);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            max-width: 500px;
+            width: 100%;
+            padding: var(--spacing-2xl);
+            text-align: center;
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .welcome-logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+        }
+
+        .welcome-logo svg {
+            width: 50px;
+            height: 50px;
+            color: white;
+        }
+
+        .welcome-header h1 {
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+            font-size: 2rem;
+        }
+
+        .welcome-header p {
+            color: #6b7280;
+            margin: 0 0 var(--spacing-md) 0;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .welcome-description {
+            background-color: var(--secondary);
+            border-radius: var(--radius);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+            border-left: 4px solid var(--primary-light);
+        }
+
+        .welcome-description p {
+            color: var(--foreground);
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .welcome-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-2xl);
+        }
+
+        .btn-welcome {
+            padding: var(--spacing-lg) var(--spacing-xl);
+            border: none;
+            border-radius: var(--radius);
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-md);
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-entrar {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-entrar:hover {
+            background-color: var(--primary-dark);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-3px);
+        }
+
+        .btn-entrar:active {
+            transform: scale(0.98);
+        }
+
+        .btn-criar {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-criar:hover {
+            background-color: var(--secondary);
+            border-color: var(--primary-dark);
+            color: var(--primary-dark);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+        }
+
+        .btn-criar:active {
+            transform: scale(0.98);
+        }
+
+        .welcome-footer {
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.75rem;
+            margin-top: var(--spacing-xl);
+            padding-top: var(--spacing-xl);
+            border-top: 1px solid var(--border);
+        }
+
+        .welcome-footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 480px) {
+            .welcome-card {
+                padding: var(--spacing-xl);
+            }
+
+            .welcome-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .welcome-logo {
+                width: 70px;
+                height: 70px;
+                margin-bottom: var(--spacing-lg);
+            }
+
+            .welcome-logo svg {
+                width: 40px;
+                height: 40px;
+            }
+
+            .btn-welcome {
+                padding: var(--spacing-md) var(--spacing-lg);
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-page">
+        <div class="welcome-card">
+            <!-- Logo -->
+            <div class="welcome-logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                    <path d="M16 4V2m-8 2V2"></path>
+                </svg>
+            </div>
+
+            <!-- Header -->
+            <div class="welcome-header">
+                <h1>Banco Bancário</h1>
+                <p>Seu banco digital de confiança</p>
+            </div>
+
+            <!-- Description -->
+            <div class="welcome-description">
+                <p>
+                    Bem-vindo ao Banco Bancário! Gerencie suas finanças com segurança, facilidade e rapidez. 
+                    Crie sua conta agora e comece a aproveitar todos os nossos serviços.
+                </p>
+            </div>
+
+            <!-- Buttons -->
+            <div class="welcome-buttons">
+                <a href="logar.html" class="btn-welcome btn-entrar">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                        <polyline points="10 17 15 12 10 7"></polyline>
+                        <line x1="15" y1="12" x2="3" y2="12"></line>
+                    </svg>
+                    Entrar
+                </a>
+                <a href="user.html" class="btn-welcome btn-criar">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                        <polyline points="12 4 12 10 8 6 16 6"></polyline>
+                    </svg>
+                    Criar Conta
+                </a>
+            </div>
+
+            <div class="welcome-footer">
+                <p>&copy; 2026 Banco Bancário. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

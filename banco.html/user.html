@@ -5,13 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Usuário - Banco Bancário</title>
     <link rel="stylesheet" href="../banco.css/styles.css">
+    <style>
+        .error-message {
+            background-color: #fee2e2;
+            border: 1px solid #fecaca;
+            color: #dc2626;
+            padding: var(--spacing-md);
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            display: none;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .success-message {
+            background-color: #dcfce7;
+            border: 1px solid #bbf7d0;
+            color: #16a34a;
+            padding: var(--spacing-md);
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            display: none;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .user-info-box {
+            background-color: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+            display: none;
+        }
+
+        .user-info-box.show {
+            display: block;
+        }
+
+        .user-info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .user-info-item:last-child {
+            border-bottom: none;
+        }
+
+        .user-info-label {
+            font-weight: 600;
+            color: var(--foreground);
+        }
+
+        .user-info-value {
+            color: var(--primary);
+            font-family: var(--font-mono);
+            font-weight: 500;
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="header-back">
-                <a href="index.html" class="back-button">← Voltar</a>
+                <a href="inicio.html" class="back-button">← Voltar</a>
             </div>
             <h1 class="header-title">Cadastro de Usuário</h1>
             <p class="header-subtitle">Crie uma nova conta bancária</p>
@@ -29,6 +95,9 @@
                             <circle cx="12" cy="7" r="4"></circle>
                         </svg>
                     </div>
+
+                    <div class="error-message" id="registerError"></div>
+                    <div class="success-message" id="registerSuccess"></div>
 
                     <form id="userForm" class="form">
                         <!-- Full Name Input -->
@@ -61,12 +130,34 @@
                         <button type="submit" class="btn btn-primary btn-full">Criar Conta</button>
                     </form>
 
+                    <!-- User Info Box (shown after successful registration) -->
+                    <div class="user-info-box" id="userInfoBox">
+                        <h3 style="margin-top: 0; color: var(--primary);">Conta Criada com Sucesso!</h3>
+                        <div class="user-info-item">
+                            <span class="user-info-label">ID da Conta:</span>
+                            <span class="user-info-value" id="displayUserId">-</span>
+                        </div>
+                        <div class="user-info-item">
+                            <span class="user-info-label">Nome:</span>
+                            <span class="user-info-value" id="displayUserName">-</span>
+                        </div>
+                        <div class="user-info-item">
+                            <span class="user-info-label">Email:</span>
+                            <span class="user-info-value" id="displayUserEmail">-</span>
+                        </div>
+                        <div class="user-info-item">
+                            <span class="user-info-label">Saldo Inicial:</span>
+                            <span class="user-info-value" id="displayUserBalance">R$ 0,00</span>
+                        </div>
+                    </div>
+
                     <!-- Info Box -->
                     <div class="info-box">
                         <p><strong>Importante:</strong></p>
                         <ul class="info-list">
                             <li>• Cada email só pode ser usado uma vez</li>
                             <li>• Você receberá uma conta com saldo inicial de R$ 0,00</li>
+                            <li>• Um ID único de 11 números será gerado automaticamente</li>
                             <li>• Poderá realizar depósitos, transferências e solicitar empréstimos</li>
                         </ul>
                     </div>
@@ -82,7 +173,92 @@
         </div>
     </footer>
 
-    <script src="banking-system.js"></script>
+    <script src="../banco.js/app.js"></script>
     <script src="../banco.js/user.js"></script>
+    <script src="../banco.js/account.js"></script>
+    <script src="../banco.js/deposit.js"></script>
+    <script src="../banco.js/transfer.js"></script>
+    <script src="../banco.js/loan.js"></script>
+    <script src="../banco.js/installment.js"></script>
+    <script>
+        // Função para gerar ID aleatório de 11 números
+        function generateRandomId() {
+            return Math.floor(Math.random() * 99999999999).toString().padStart(11, '0');
+        }
+
+        // Função para formatar moeda
+        function formatCurrency(value) {
+            return new Intl.NumberFormat('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            }).format(value);
+        }
+
+        // Carregar usuários do localStorage ao iniciar a página
+        App.loadUsersFromStorage();
+
+        // Form submission handler
+        document.getElementById('userForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const registerError = document.getElementById('registerError');
+            const registerSuccess = document.getElementById('registerSuccess');
+            const userInfoBox = document.getElementById('userInfoBox');
+
+            // Clear messages
+            registerError.classList.remove('show');
+            registerSuccess.classList.remove('show');
+            userInfoBox.classList.remove('show');
+
+            // Validations
+            if (!fullName || !email) {
+                registerError.textContent = 'Por favor, preencha todos os campos.';
+                registerError.classList.add('show');
+                return;
+            }
+
+            if (fullName.length < 3) {
+                registerError.textContent = 'O nome deve ter pelo menos 3 caracteres.';
+                registerError.classList.add('show');
+                return;
+            }
+
+            // Create user using App.createUser (which now saves to localStorage)
+            const newUser = App.createUser(fullName, email);
+            if (newUser) {
+                // Generate random ID
+                const userId = generateRandomId();
+                newUser.id = userId;
+
+                // Save the updated user with ID to localStorage
+                App.saveUsersToStorage();
+
+                // Show success message
+                registerSuccess.textContent = 'Conta criada com sucesso! Seus dados foram salvos no banco de dados.';
+                registerSuccess.classList.add('show');
+
+                // Display user info
+                document.getElementById('displayUserId').textContent = userId;
+                document.getElementById('displayUserName').textContent = fullName;
+                document.getElementById('displayUserEmail').textContent = email;
+                document.getElementById('displayUserBalance').textContent = formatCurrency(0);
+                userInfoBox.classList.add('show');
+
+                // Clear form
+                document.getElementById('userForm').reset();
+
+                // Redirect after 3 seconds
+                setTimeout(() => {
+                    sessionStorage.setItem('currentUserEmail', email);
+                    window.location.href = 'index.html';
+                }, 3000);
+            } else {
+                registerError.textContent = 'Este email já está registrado. Use outro email para criar uma nova conta.';
+                registerError.classList.add('show');
+            }
+        });
+    </script>
 </body>
 </html>

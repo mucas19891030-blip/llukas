@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Bancário - Login</title>
+    <link rel="stylesheet" href="../banco.css/styles.css">
+    <style>
+        /* ============================================
+           PÁGINA DE LOGIN
+           ============================================ */
+
+        .login-page {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            padding: var(--spacing-lg);
+        }
+
+        .login-card {
+            background-color: var(--background);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            max-width: 450px;
+            width: 100%;
+            padding: var(--spacing-2xl);
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .login-header h1 {
+            color: var(--primary);
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.75rem;
+        }
+
+        .login-header p {
+            color: #9ca3af;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: var(--spacing-xl);
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--primary-dark);
+            transform: translateX(-3px);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: var(--foreground);
+            font-size: 0.95rem;
+            font-family: var(--font-display);
+        }
+
+        .form-input {
+            padding: var(--spacing-md);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: var(--background);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: #9ca3af;
+        }
+
+        .btn-login {
+            padding: var(--spacing-md) var(--spacing-lg);
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: var(--spacing-md);
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            width: 100%;
+        }
+
+        .btn-login:hover {
+            background-color: var(--primary-dark);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .btn-login:active {
+            transform: scale(0.98);
+        }
+
+        .btn-login:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .error-message {
+            background-color: #fee2e2;
+            border: 1px solid #fecaca;
+            color: #dc2626;
+            padding: var(--spacing-md);
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            display: none;
+            animation: slideDown 0.3s ease;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .success-message {
+            background-color: #dcfce7;
+            border: 1px solid #bbf7d0;
+            color: #16a34a;
+            padding: var(--spacing-md);
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            display: none;
+            animation: slideDown 0.3s ease;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-footer {
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.75rem;
+            margin-top: var(--spacing-xl);
+            padding-top: var(--spacing-xl);
+            border-top: 1px solid var(--border);
+        }
+
+        .login-footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 480px) {
+            .login-card {
+                padding: var(--spacing-xl);
+            }
+
+            .login-header h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-page">
+        <div class="login-card">
+            <!-- Back Link -->
+            <a href="inicio.html" class="back-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Voltar
+            </a>
+
+            <!-- Header -->
+            <div class="login-header">
+                <h1>Entrar</h1>
+                <p>Acesse sua conta bancária</p>
+            </div>
+
+            <!-- Messages -->
+            <div class="error-message" id="loginError"></div>
+            <div class="success-message" id="loginSuccess"></div>
+
+            <!-- Login Form -->
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label" for="loginEmail">Email</label>
+                    <input 
+                        type="email" 
+                        id="loginEmail" 
+                        class="form-input" 
+                        placeholder="seu@email.com" 
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="btn-login">Entrar</button>
+            </form>
+
+            <div class="login-footer">
+                <p>&copy; 2026 Banco Bancário. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../banco.js/app.js"></script>
+    <script src="../banco.js/user.js"></script>
+    <script src="../banco.js/account.js"></script>
+    <script src="../banco.js/deposit.js"></script>
+    <script src="../banco.js/transfer.js"></script>
+    <script src="../banco.js/loan.js"></script>
+    <script src="../banco.js/installment.js"></script>
+    <script>
+        // Carregar usuários do localStorage ao iniciar
+        function loadUsersFromStorage() {
+            const storedUsers = localStorage.getItem('bankUsers');
+            if (storedUsers) {
+                try {
+                    const users = JSON.parse(storedUsers);
+                    // Restaurar usuários no App
+                    users.forEach(userData => {
+                        // Verificar se o usuário já existe
+                        if (!App.findUserByEmail(userData.email)) {
+                            const user = new User(userData.fullName, userData.email);
+                            user.id = userData.id;
+                            App.users.push(user);
+                        }
+                    });
+                } catch (e) {
+                    console.error('Erro ao carregar usuários:', e);
+                }
+            }
+        }
+
+        // Carregar usuários ao iniciar a página
+        loadUsersFromStorage();
+
+        // Login form handler
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('loginEmail').value.trim();
+            const loginError = document.getElementById('loginError');
+            const loginSuccess = document.getElementById('loginSuccess');
+
+            // Clear messages
+            loginError.classList.remove('show');
+            loginSuccess.classList.remove('show');
+
+            if (!email) {
+                loginError.textContent = 'Por favor, insira seu email.';
+                loginError.classList.add('show');
+                return;
+            }
+
+            // Check if user exists
+            const user = App.findUserByEmail(email);
+            if (user) {
+                loginSuccess.textContent = `Bem-vindo, ${user.fullName}! Redirecionando...`;
+                loginSuccess.classList.add('show');
+                
+                // Store current user in sessionStorage
+                sessionStorage.setItem('currentUserEmail', email);
+                
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1500);
+            } else {
+                loginError.textContent = 'Email não encontrado. Crie uma conta para continuar.';
+                loginError.classList.add('show');
+            }
+        });
+    </script>
+</body>
+</html>
